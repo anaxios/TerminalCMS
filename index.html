@@ -3,51 +3,58 @@
     <head>
         <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE"> <!-- stop browser from caching while testing -->
         <meta name="viewport" content="user-scalable=0"> <!-- make ios not zoom when keyboard pops up -->
+        <script src="https://unpkg.com/htmx.org@1.9.10" integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/htmx.org/dist/ext/class-tools.js"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   crossorigin="anonymous"></script>
-        <script src="https://cdn.rawgit.com/showdownjs/showdown/1.8.5/dist/showdown.min.js"></script>
         <link rel="stylesheet" type="text/css" href="css/terminalCMS.css">
-        <title>DAEDALIST.NET</title> 
+        <title>J3NKN5.CC</title> 
         
     </head>
     <body>
         <div id="wrapping">
             <div id="consoleWindow">
-                <div id="content"></div> 
-                
-                <div>]<span id="textBox"></span><span class="blink" style="visibility:visible;">&block;</span>
+                <div id="content"></div>
+ 
+                    
+                <div>]<span id="textBox"></span><span class="blink" hx-ext="class-tools" classes="toggle CursorBlink:1s" style="visibility:visible;">&block;</span>
                     <!-- a janky way to make mobile work by hiding a text input field and printing its contents to the home make console -->
-                    <input type="text" id="textBoxInputElement" style="opacity:0; color:transparent;text-shadow: 0 0 0;text-indent: -9999em;z-index:-99;transform: scale(0);">
+                    <input type="text" id="textBoxInputElement" 
+                        style="opacity:0; color:transparent;text-shadow: 0 0 0;text-indent: -9999em;z-index:-99;transform: scale(0);"
+                        hx-get="https://langchain-workers.derelict.workers.dev/"
+                        hx-trigger="keydown[keyCode==13]"
+                        hx-target="#content"
+                        name="q"
+                    >
                 </div>
             </div>
         </div>
-        
-        <script src="js/detectMobileBrowser.js"></script>
-        <script src="js/commandLine.js"></script>
-        <script src="js/inputCaretBlinker.js"></script>
+
 
         <script type="text/javascript">
-            if (typeof jQuery == "undefined") {
-                alert("jQuery is not installed.");
-            }
-            // make a markdown converter
-            var mdConverter = new showdown.Converter();
-
-            // trigger intro content to load
-            window.location.hash = "INTRO";
-            
+            $(document).keyup( function (event) {
+                event.preventDefault(); // stop default key responses so console input will work particularly backspace.
+                var textBoxString = $("#textBoxInputElement").val().toUpperCase();
+                
+                // submit console input
+                if (event.which == 13) {
+                    $("#content").text("Thinking...");
+                    $("#textBox").html(""); // reset console input
+                    $("#textBoxInputElement").val(""); // reset hidden text input box
+                }
+                // update console text with hidden text input value 
+                else {
+                    $("#textBox").text(textBoxString);
+                }
+            });
+         
             // focus command line by tapping window since text field is hidden
             $("#consoleWindow").click( function(){
                 $("#textBoxInputElement").focus();
             });
 
-            // change page content based on url hash change
-            $(window).on('hashchange', function() {
-                updateContent();
-            });
-
             // reload content on page reload
             $(window).on("load", function(){
-                updateContent();
+            
                 $("#textBoxInputElement").focus();
             });
         </script>
