@@ -48,67 +48,67 @@ h4 {
 
 @keyframes flicker {
   0% {
-    opacity: 0.27861;
+    opacity: 0.17861;
   }
   5% {
-    opacity: 0.34769;
+    opacity: 0.14769;
   }
   10% {
-    opacity: 0.23604;
+    opacity: 0.13604;
   }
   15% {
-    opacity: 0.90626;
+    opacity: 0.10626;
   }
   20% {
     opacity: 0.18128;
   }
   25% {
-    opacity: 0.83891;
+    opacity: 0.13891;
   }
   30% {
-    opacity: 0.65583;
+    opacity: 0.15583;
   }
   35% {
-    opacity: 0.67807;
+    opacity: 0.17807;
   }
   40% {
-    opacity: 0.26559;
+    opacity: 0.16559;
   }
   45% {
-    opacity: 0.84693;
+    opacity: 0.14693;
   }
   50% {
-    opacity: 0.96019;
+    opacity: 0.16019;
   }
   55% {
-    opacity: 0.08594;
+    opacity: 0.18594;
   }
   60% {
-    opacity: 0.20313;
+    opacity: 0.10313;
   }
   65% {
-    opacity: 0.71988;
+    opacity: 0.11988;
   }
   70% {
-    opacity: 0.53455;
+    opacity: 0.13455;
   }
   75% {
-    opacity: 0.37288;
+    opacity: 0.17288;
   }
   80% {
-    opacity: 0.71428;
+    opacity: 0.11428;
   }
   85% {
-    opacity: 0.70419;
+    opacity: 0.10419;
   }
   90% {
-    opacity: 0.7003;
+    opacity: 0.10013;
   }
   95% {
-    opacity: 0.36108;
+    opacity: 0.16108;
   }
   100% {
-    opacity: 0.24387;
+    opacity: 0.14387;
   }
 }
 @keyframes textShadow {
@@ -188,7 +188,7 @@ h4 {
   opacity: 0;
   z-index: 2;
   pointer-events: none;
-  animation: flicker 0.15s infinite;
+  
 }
 .crt::before {
   content: " ";
