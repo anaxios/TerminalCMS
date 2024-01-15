@@ -41,14 +41,11 @@ h3 {
 h4 {
     text-align: center;
 }
+.CursorBlink {
+    opacity: 0;
+}
 
-            /* .CursorBlink {
-                -webkit-animation: 1s blink step-end infinite;
-                -moz-animation: 1s blink step-end infinite;
-                -ms-animation: 1s blink step-end infinite;
-                -o-animation: 1s blink step-end infinite;
-                animation: 1s blink step-end infinite;
-            }
+            /* 
             @keyframes "blink" {
                 from, to {color: transparent;}
                 50% {color: rgba(109, 156, 126, 0.705);}
