@@ -13,10 +13,10 @@
     <body>
         <div id="wrapping">
             <div id="consoleWindow">
-                <div id="content"></div>
+                <div id="content" class="crt" hx-get="md/intro.html" hx-trigger="load"></div>
  
                     
-                <div>]<span id="textBox"></span><span class="blink" hx-ext="class-tools" classes="toggle CursorBlink:1s" style="visibility:visible;">&block;</span>
+                <div>]<span id="textBox"></span><span class="blink" hx-ext="class-tools" classes="toggle CursorBlink:700ms" style="visibility:visible;">&block;</span>
                     <!-- a janky way to make mobile work by hiding a text input field and printing its contents to the home make console -->
                     <input type="text" id="textBoxInputElement" 
                         style="opacity:0; color:transparent;text-shadow: 0 0 0;text-indent: -9999em;z-index:-99;transform: scale(0);"
@@ -54,7 +54,6 @@
 
             // reload content on page reload
             $(window).on("load", function(){
-                $("#content").text("What would you like to know?");
                 $("#textBoxInputElement").focus();
             });
         </script>
