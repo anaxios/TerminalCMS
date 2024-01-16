@@ -31,7 +31,7 @@
 
 
         <script type="text/javascript">
-            $(document).keyup( function (event) {
+            $(document).on('keyup change', function (event) {
                 event.preventDefault(); // stop default key responses so console input will work particularly backspace.
                 var textBoxString = $("#textBoxInputElement").val().toUpperCase();
                 
