@@ -1,36 +1,59 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-    <head>
-        <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE"> <!-- stop browser from caching while testing -->
-        <meta name="viewport" content="user-scalable=0"> <!-- make ios not zoom when keyboard pops up -->
-        <script src="https://unpkg.com/htmx.org@1.9.10" integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC" crossorigin="anonymous"></script>
-        <script src="https://unpkg.com/htmx.org/dist/ext/class-tools.js"></script>
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   crossorigin="anonymous"></script>
-        <link rel="stylesheet" type="text/css" href="css/terminalCMS.css">
-        <title>J3NKN5.CC</title> 
-        
-    </head>
-    <body>
-        <div id="wrapping">
-            <div id="consoleWindow" class="crt">
-                <div id="content" hx-get="md/intro.html" hx-trigger="load"></div>
- 
-                    
-                <div>]<span id="textBox"></span><span class="blink" hx-ext="class-tools" classes="toggle CursorBlink:700ms" style="visibility:visible;">&block;</span>
-                    <!-- a janky way to make mobile work by hiding a text input field and printing its contents to the home make console -->
-                    <input type="text" id="textBoxInputElement" 
-                        style="opacity:0; color:transparent;text-shadow: 0 0 0;text-indent: -9999em;z-index:-99;transform: scale(0);"
-                        hx-get="https://langchain-workers.derelict.workers.dev/"
-                        hx-trigger="keydown[keyCode==13]"
-                        hx-target="#content"
-                        name="q"
-                    >
-                </div>
-            </div>
+  <head>
+    <meta http-equiv="CACHE-CONTROL" content="NO-CACHE" />
+    <!-- stop browser from caching while testing -->
+    <meta name="viewport" content="user-scalable=0" />
+    <!-- make ios not zoom when keyboard pops up -->
+    <script
+      src="https://unpkg.com/htmx.org@1.9.10"
+      integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/htmx.org/dist/ext/class-tools.js"></script>
+    <!-- Alpine Plugins -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.x.x/dist/cdn.min.js"
+    ></script>
+
+    <!-- Alpine Core -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <title>J3NKN5.CC</title>
+  </head>
+  <body class="bg-emerald-950">
+    <div id="wrapping" class="crt">
+      <div id="consoleWindow">
+        <div id="content" hx-get="md/intro.html" hx-trigger="load"></div>
+      </div>
+      <div class="absolute inset-x-0 bottom-0 bg-inheret pb-2">
+        <div class="flex bg-inheret">
+          <span class="">]</span>
+          <!-- <span class="animate-pulse" hx-ext="class-tools" classes="toggle CursorBlink:700ms" style="visibility:visible;">&block;</span> -->
+          <input
+            type="text"
+            class="crt bg-emerald-950 focus:bg-emerald-950 hover:bg-emerald-950 autofill:bg-emerald-950 carot-white w-full focus:outline-none focus:ring-0 focus:border-transparent"
+            id="textBoxInputElement"
+            hx-get="https://langchain-workers.derelict.workers.dev/"
+            hx-trigger="keydown[keyCode==13]"
+            hx-target="#content"
+            name="q"
+            placeholder="Type your question here."
+          />
         </div>
+      </div>
+    </div>
 
-
-        <script type="text/javascript">
+    <!-- <script type="text/javascript">
             $(document).on('keyup change', function (event) {
                 event.preventDefault(); // stop default key responses so console input will work particularly backspace.
                 var textBoxString = $("#textBoxInputElement").val().toUpperCase();
@@ -56,6 +79,6 @@
             $(window).on("load", function(){
                 $("#textBoxInputElement").focus();
             });
-        </script>
-    </body>
+        </script> -->
+  </body>
 </html>
