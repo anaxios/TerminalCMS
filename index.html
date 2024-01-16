@@ -30,9 +30,41 @@
     <link rel="stylesheet" type="text/css" href="css/main.css" />
     <title>J3NKN5.CC</title>
   </head>
-  <body class="bg-emerald-950">
+  <body class="bg-emerald-950 pl-4 pr-4">
     <div id="wrapping" class="crt">
       <div id="consoleWindow">
+        <span id="spinner" class="htmx-indicator">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            viewBox="0 0 50 50"
+            width="50px"
+            height="50px"
+          >
+            <!-- Blink cursor -->
+            <text
+              font-family='"Inconsolata", monospace'
+              fill="#126D08"
+              font-size="14"
+              dominant-baseline="middle"
+              x="0%"
+              y="21"
+              text-anchor="start"
+            >
+              <!-- 3 non-breaking spaces followed by '█' -->
+              &#xa0;&#x2588;
+              <animate
+                id="blinker"
+                attributeName="opacity"
+                dur="1s"
+                values="1;0"
+                repeatCount="indefinite"
+                begin="0s"
+                calcMode="discrete"
+              />
+            </text>
+          </svg>
+        </span>
         <div id="content" hx-get="md/intro.html" hx-trigger="load"></div>
       </div>
       <div class="absolute inset-x-0 bottom-0 bg-inheret pb-2">
@@ -46,39 +78,12 @@
             hx-get="https://langchain-workers.derelict.workers.dev/"
             hx-trigger="keydown[keyCode==13]"
             hx-target="#content"
+            hx-indicator="#spinner"
             name="q"
             placeholder="Type your question here."
           />
         </div>
       </div>
     </div>
-
-    <!-- <script type="text/javascript">
-            $(document).on('keyup change', function (event) {
-                event.preventDefault(); // stop default key responses so console input will work particularly backspace.
-                var textBoxString = $("#textBoxInputElement").val().toUpperCase();
-                
-                // submit console input
-                if (event.which == 13) {
-                    $("#content").text("Thinking...");
-                    $("#textBox").html(""); // reset console input
-                    $("#textBoxInputElement").val(""); // reset hidden text input box
-                }
-                // update console text with hidden text input value 
-                else {
-                    $("#textBox").text(textBoxString);
-                }
-            });
-         
-            // focus command line by tapping window since text field is hidden
-            $("#consoleWindow").click( function(){
-                $("#textBoxInputElement").focus();
-            });
-
-            // reload content on page reload
-            $(window).on("load", function(){
-                $("#textBoxInputElement").focus();
-            });
-        </script> -->
   </body>
 </html>
