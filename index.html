@@ -22,52 +22,57 @@
       defer
       src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
     ></script>
-    <script
-      src="https://code.jquery.com/jquery-3.2.1.min.js"
-      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-      crossorigin="anonymous"
-    ></script>
     <link rel="stylesheet" type="text/css" href="css/main.css" />
     <title>J3NKN5.CC</title>
   </head>
-  <body class="bg-emerald-950 pl-4 pr-4">
-    <div id="wrapping" class="crt">
-      <div id="consoleWindow">
-        <span id="spinner" class="htmx-indicator">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            viewBox="0 0 50 50"
-            width="50px"
-            height="50px"
-          >
-            <!-- Blink cursor -->
-            <text
-              font-family='"Inconsolata", monospace'
-              fill="#126D08"
-              font-size="14"
-              dominant-baseline="middle"
-              x="0%"
-              y="21"
-              text-anchor="start"
-            >
-              <!-- 3 non-breaking spaces followed by '█' -->
-              &#xa0;&#x2588;
-              <animate
-                id="blinker"
-                attributeName="opacity"
-                dur="1s"
-                values="1;0"
-                repeatCount="indefinite"
-                begin="0s"
-                calcMode="discrete"
-              />
-            </text>
-          </svg>
-        </span>
-        <div id="content" hx-get="md/intro.html" hx-trigger="load"></div>
-      </div>
-      <div class="absolute inset-x-0 bottom-0 bg-inheret pb-2">
+  <body class="bg-emerald-950">
+    <span
+      id="spinner"
+      class="crt fixed top-0 left-0 right-0 z-10 htmx-indicator"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg "
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        viewBox="0 0 50 50"
+        width="50px"
+        height="50px"
+      >
+        <!-- Blink cursor -->
+        <text
+          font-family='"Inconsolata", monospace'
+          fill="#126D08"
+          font-size="14"
+          dominant-baseline="middle"
+          x="0%"
+          y="21"
+          text-anchor="start"
+        >
+          <!-- 3 non-breaking spaces followed by '█' -->
+          &#xa0;&#x2588;
+          <animate
+            id="blinker"
+            attributeName="opacity"
+            dur="1s"
+            values="1;0"
+            repeatCount="indefinite"
+            begin="0s"
+            calcMode="discrete"
+          />
+        </text>
+      </svg>
+    </span>
+    <!-- MAIN CONSOLE WINDOW -->
+    <div
+      id="consoleWindow"
+      class="crt flex flex-col place-content-between max-h-screen h-screen max-w-screen-lg bg-emerald-950 pl-4 pr-4 font-apple text-zinc-400"
+    >
+      <div
+        id="content"
+        hx-get="pages/intro"
+        hx-trigger="load"
+        class="grow overflow-auto"
+      ></div>
+      <div class="flex-none inset-x-0 bottom-0 bg-inheret pt-1 mb-2">
         <div class="flex bg-inheret">
           <span class="">]</span>
           <!-- <span class="animate-pulse" hx-ext="class-tools" classes="toggle CursorBlink:700ms" style="visibility:visible;">&block;</span> -->

@@ -4,8 +4,8 @@
   "description": "An old website project that emulates the feel of an old Apple IIe",
   "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "tailwind": "npx tailwindcss -i ./css/terminalCMS.css -o ./css/main.css"
+    "build": "tailwindcss -i ./css/terminalCMS.css -o ./css/main.css",
+    "watch": "tailwindcss -i ./css/terminalCMS.css -o ./css/main.css --watch"
   },
   "author": "",
   "license": "ISC",
