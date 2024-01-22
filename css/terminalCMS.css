@@ -1,8 +1,8 @@
 @tailwind base;
 
 :root {
-  --primary: rgb(2 44 34);
-  --secondary: rgb(2 44 34);
+  --primary: rgb(2, 104, 80);
+  --secondary: rgb(0, 32, 32);
 }
 
 /* Firefox */

@@ -3,14 +3,17 @@
   <head>
     <meta http-equiv="CACHE-CONTROL" content="NO-CACHE" />
     <!-- stop browser from caching while testing -->
-    <meta name="viewport" content="user-scalable=0" />
+    <!-- <meta name="viewport" content="user-scalable=0" /> -->
     <!-- make ios not zoom when keyboard pops up -->
     <script
       src="https://unpkg.com/htmx.org@1.9.10"
       integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC"
       crossorigin="anonymous"
     ></script>
+    <script src="https://unpkg.com/htmx.org/dist/ext/json-enc.js"></script>
     <script src="https://unpkg.com/htmx.org/dist/ext/class-tools.js"></script>
+    <script src="https://unpkg.com/htmx.org@1.4.1/dist/ext/client-side-templates.js"></script>
+    <script src="https://unpkg.com/mustache@latest"></script>
     <!-- Alpine Plugins -->
     <script
       defer
@@ -25,42 +28,43 @@
     <link rel="stylesheet" type="text/css" href="css/main.css" />
     <title>J3NKN5.CC</title>
   </head>
-  <body class="bg-emerald-950">
-    <span
-      id="spinner"
-      class="crt fixed top-0 left-0 right-0 z-10 htmx-indicator"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg "
-        xmlns:xlink="http://www.w3.org/1999/xlink"
-        viewBox="0 0 50 50"
-        width="50px"
-        height="50px"
-      >
-        <!-- Blink cursor -->
-        <text
-          font-family='"Inconsolata", monospace'
-          fill="#126D08"
-          font-size="14"
-          dominant-baseline="middle"
-          x="0%"
-          y="21"
-          text-anchor="start"
+  <body class="bg-emerald-950" hx-ext="client-side-templates">
+    <div id="spinner" class="fixed top-0 left-0 right-0 z-10 htmx-indicator">
+      <span class="crt flex">
+        <svg
+          class=""
+          xmlns="http://www.w3.org/2000/svg "
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 10 10"
+          width="15px"
+          height="25px"
         >
-          <!-- 3 non-breaking spaces followed by '█' -->
-          &#xa0;&#x2588;
-          <animate
-            id="blinker"
-            attributeName="opacity"
-            dur="1s"
-            values="1;0"
-            repeatCount="indefinite"
-            begin="0s"
-            calcMode="discrete"
-          />
-        </text>
-      </svg>
-    </span>
+          <!-- Blink cursor -->
+          <text
+            font-family='"Inconsolata", monospace'
+            fill="#126D08"
+            font-size="40"
+            dominant-baseline="middle"
+            x="0%"
+            y="41%"
+            text-anchor="start"
+          >
+            <!-- 3 non-breaking spaces followed by '█' -->
+            &#x2588;
+            <animate
+              id="blinker"
+              attributeName="opacity"
+              dur="1s"
+              values="1;0"
+              repeatCount="indefinite"
+              begin="0s"
+              calcMode="discrete"
+            />
+          </text>
+        </svg>
+        <span class="pl-2 font-apple text-zinc-400 uppercase">loading...</span>
+      </span>
+    </div>
     <!-- MAIN CONSOLE WINDOW -->
     <div
       id="consoleWindow"
@@ -72,6 +76,7 @@
         hx-trigger="load"
         class="grow overflow-auto whitespace-pre-wrap"
       ></div>
+
       <div class="flex-none inset-x-0 bottom-0 bg-inheret pt-1 mb-2">
         <div class="flex bg-inheret">
           <span class="">]</span>
@@ -80,15 +85,29 @@
             type="text"
             class="crt bg-emerald-950 focus:bg-emerald-950 hover:bg-emerald-950 autofill:bg-emerald-950 carot-white w-full focus:outline-none focus:ring-0 focus:border-transparent"
             id="textBoxInputElement"
-            hx-get="https://langchain-workers.derelict.workers.dev/"
+            hx-get="https://api.j3nkn5.cc/"
             hx-trigger="keydown[keyCode==13]"
             hx-target="#content"
             hx-indicator="#spinner"
-            name="q"
+            hx-swap="beforeend scroll:bottom transition:true"
+            hx-vals='{"llm": "true", "vectors": "true"}'
+            mustache-template="foo"
+            name="query"
             placeholder="Type your question here."
           />
         </div>
       </div>
     </div>
+    <template id="foo">
+      <span>___________________________</span>
+      <p>ANSWER: {{query}}</p>
+      <!-- prettier-ignore -->
+      <p>VECTORS: 
+        {{#vector}} 
+        {{pageContent}} 
+        {{metadata.filename}}<br/>
+        {{/vector}}
+      </p>
+    </template>
   </body>
 </html>
