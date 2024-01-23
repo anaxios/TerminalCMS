@@ -29,7 +29,7 @@
     <link rel="stylesheet" type="text/css" href="css/main.css" />
     <title>J3NKN5.CC</title>
   </head>
-  <body class="crt bg-emerald-950" hx-ext="client-side-templates">
+  <body class="bg-emerald-950" hx-ext="client-side-templates">
     <!-- MAIN CONSOLE WINDOW -->
     <div
       id="consoleWindow"
@@ -57,7 +57,7 @@
           <!-- <span class="animate-pulse" hx-ext="class-tools" classes="toggle CursorBlink:700ms" style="visibility:visible;">&block;</span> -->
           <input
             type="text"
-            class="crt bg-emerald-950 focus:bg-emerald-950 hover:bg-emerald-950 autofill:bg-emerald-950 carot-white w-full focus:outline-none focus:ring-0 focus:border-transparent"
+            class="bg-emerald-950 focus:bg-emerald-950 hover:bg-emerald-950 autofill:bg-emerald-950 carot-white w-full focus:outline-none focus:ring-0 focus:border-transparent"
             id="textBoxInputElement"
             hx-get="https://api.j3nkn5.cc/"
             hx-trigger="keydown[keyCode==13]"
@@ -82,6 +82,34 @@
         {{metadata.filename}}<br/>
         {{/vector}}
       </p>
+    </template>
+    <template id="menu-item">
+      <div
+        id="menu"
+        class="text-black tracking-tighter mx-3 font-extrabold font-apple"
+        _="on mouseleave wait for a continue or 300ms 
+        if the result's type is 'continue'
+            show #sub-menu in me
+        otherwise
+            hide #sub-menu in me
+            remove .bg-black .text-white from the first <button/> in me"
+      >
+        <button
+          id="menu-btn"
+          _="on click toggle the *display of the next <div/> toggle .bg-black .text-white on me"
+        >
+          {{menu-name}}
+        </button>
+        <div
+          id="sub-menu"
+          class="absolute bg-white py-1 font-apple border-b-2 border-black"
+          _="on mouseenter send continue to the closest parent <div/>
+        on load hide me"
+          hx-get="{{pages}}"
+          hx-trigger="load"
+          hx-swap="beforeend"
+        ></div>
+      </div>
     </template>
   </body>
 </html>

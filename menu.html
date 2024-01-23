@@ -1,7 +1,7 @@
 <div id="menu-container" class="flex flex-row">
   <button
     id="logo-menu"
-    class="text-black tracking-tighter px-3 font-extrabold font-apple crt"
+    class="text-black tracking-tighter font-extrabold font-apple"
     _="on click toggle .hidden on #logo-sub-menu"
   >
     ][
@@ -12,60 +12,96 @@
     ></div>
   </button>
   <!--  -->
-  <button
+  <!--  -->
+  <!--  -->
+  <!--  -->
+  <!--  -->
+  <!--  -->
+  <div
     id="file-menu"
-    class="text-black tracking-tighter px-3 font-extrabold font-apple crt"
-    _="on click toggle .hidden on #file-sub-menu
-          "
+    class="text-black tracking-tighter mx-3 font-extrabold font-apple"
+    _="on mouseleave wait for a continue or 300ms 
+        if the result's type is 'continue'
+            show #file-sub-menu in me
+        otherwise
+            hide #file-sub-menu in me
+            remove .bg-black .text-white from the first <button/> in me"
   >
-    File
+    <button
+      id="file-menu-btn"
+      _="on click toggle the *display of the next <div/> toggle .bg-black .text-white on me"
+    >
+      File
+    </button>
     <div
       id="file-sub-menu"
-      class="absolute bg-white py-1 font-apple border-b-2 border-black hidden"
-      _="on mouseleave toggle .hidden on #file-sub-menu"
+      class="absolute bg-white py-1 font-apple border-b-2 border-black"
+      _="on mouseenter send continue to the closest parent <div/>
+        on load hide me"
       hx-get="pages/"
       hx-trigger="load"
+      hx-swap="beforeend"
     ></div>
-  </button>
+  </div>
   <!--  -->
+  <!--  -->
+  <!--  -->
+  <!--  -->
+  <!--  -->
+
+  <!--  -->
+  <!--  -->
+  <!--  -->
+  <!--  -->
+  <!--  -->
+  <!--  -->
+  <div
+    id="menu"
+    class="text-black tracking-tighter mx-3 font-extrabold font-apple"
+    _="on mouseleave wait for a continue or 300ms 
+        if the result's type is 'continue'
+            show #special-sub-menu in me
+        otherwise
+            hide #special-sub-menu in me
+            remove .bg-black .text-white from the first <button/> in me"
+  >
+    <button
+      id="menu-btn"
+      _="on click toggle the *display of the next <div/> toggle .bg-black .text-white on me"
+    >
+      Special
+    </button>
+    <div
+      id="special-sub-menu"
+      class="absolute bg-white py-1 font-apple border-b-2 border-black"
+      _="on mouseenter send continue to the closest parent <div/>
+        on load hide me"
+      hx-get="pages/special"
+      hx-trigger="load"
+      hx-swap="beforeend"
+    ></div>
+  </div>
+  <!--  -->
+  <!--  -->
+  <!--  -->
+  <!--  -->
+  <!--  -->
+
   <button
     id="view-menu"
-    class="text-black tracking-tighter px-3 font-extrabold font-apple crt"
+    class="text-black tracking-tighter px-3 font-extrabold font-apple hidden"
     _="on click toggle .hidden on #view-sub-menu"
   >
     View
     <div
-      id="logo-sub-menu"
+      id="sub-menu"
       class="absolute bg-white py-1 font-apple border-b-2 border-black hidden"
       _="on mouseleave toggle .hidden on #view-sub-menu"
     ></div>
   </button>
-
-  <button
-    id="special-menu"
-    class="text-black tracking-tighter px-3 font-extrabold font-apple crt"
-    _="on click toggle .hidden on #special-sub-menu"
-    hx-get="https://ipfs.io/ipfs/bafybeigwwctpv37xdcwacqxvekr6e4kaemqsrv34em6glkbiceo3fcy4si"
-    hx-trigger="click"
-    hx-target="#content"
-  >
-    Special
-    <div
-      id="special-sub-menu"
-      class="absolute bg-white py-1 font-apple border-b-2 border-black hidden"
-      _="on mouseleave toggle .hidden on #special-sub-menu"
-    >
-      <a
-        href="https://ipfs.io/ipfs/bafybeigwwctpv37xdcwacqxvekr6e4kaemqsrv34em6glkbiceo3fcy4si"
-        class="rr"
-        >Offer</a
-      >
-    </div>
-  </button>
-
   <button
     id="startup-menu"
-    class="text-black tracking-tighter px-3 font-extrabold font-apple crt"
+    class="text-black tracking-tighter px-3 font-extrabold font-apple hidden"
     _="on click toggle .hidden on #startup-sub-menu
           "
   >
@@ -79,7 +115,7 @@
 
   <button
     id="shortcuts-menu"
-    class="text-black tracking-tighter px-3 font-extrabold font-apple crt"
+    class="text-black tracking-tighter px-3 font-extrabold font-apple hidden"
     _="on click toggle .hidden on #shortcuts-sub-menu
           "
   >
