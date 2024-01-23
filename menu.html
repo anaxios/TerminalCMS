@@ -1,0 +1,93 @@
+<div id="menu-container" class="flex flex-row">
+  <button
+    id="logo-menu"
+    class="text-black tracking-tighter px-3 font-extrabold font-apple crt"
+    _="on click toggle .hidden on #logo-sub-menu"
+  >
+    ][
+    <div
+      id="logo-sub-menu"
+      class="absolute bg-white py-1 font-apple border-b-2 border-black hidden"
+      _="on mouseleave toggle .hidden on #logo-sub-menu"
+    ></div>
+  </button>
+  <!--  -->
+  <button
+    id="file-menu"
+    class="text-black tracking-tighter px-3 font-extrabold font-apple crt"
+    _="on click toggle .hidden on #file-sub-menu
+          "
+  >
+    File
+    <div
+      id="file-sub-menu"
+      class="absolute bg-white py-1 font-apple border-b-2 border-black hidden"
+      _="on mouseleave toggle .hidden on #file-sub-menu"
+      hx-get="pages/"
+      hx-trigger="load"
+    ></div>
+  </button>
+  <!--  -->
+  <button
+    id="view-menu"
+    class="text-black tracking-tighter px-3 font-extrabold font-apple crt"
+    _="on click toggle .hidden on #view-sub-menu"
+  >
+    View
+    <div
+      id="logo-sub-menu"
+      class="absolute bg-white py-1 font-apple border-b-2 border-black hidden"
+      _="on mouseleave toggle .hidden on #view-sub-menu"
+    ></div>
+  </button>
+
+  <button
+    id="special-menu"
+    class="text-black tracking-tighter px-3 font-extrabold font-apple crt"
+    _="on click toggle .hidden on #special-sub-menu"
+    hx-get="https://ipfs.io/ipfs/bafybeigwwctpv37xdcwacqxvekr6e4kaemqsrv34em6glkbiceo3fcy4si"
+    hx-trigger="click"
+    hx-target="#content"
+  >
+    Special
+    <div
+      id="special-sub-menu"
+      class="absolute bg-white py-1 font-apple border-b-2 border-black hidden"
+      _="on mouseleave toggle .hidden on #special-sub-menu"
+    >
+      <a
+        href="https://ipfs.io/ipfs/bafybeigwwctpv37xdcwacqxvekr6e4kaemqsrv34em6glkbiceo3fcy4si"
+        class="rr"
+        >Offer</a
+      >
+    </div>
+  </button>
+
+  <button
+    id="startup-menu"
+    class="text-black tracking-tighter px-3 font-extrabold font-apple crt"
+    _="on click toggle .hidden on #startup-sub-menu
+          "
+  >
+    Startup
+    <div
+      id="startup-sub-menu"
+      class="absolute bg-white py-1 font-apple border-b-2 border-black hidden"
+      _="on mouseleave toggle .hidden on #startup-sub-menu"
+    ></div>
+  </button>
+
+  <button
+    id="shortcuts-menu"
+    class="text-black tracking-tighter px-3 font-extrabold font-apple crt"
+    _="on click toggle .hidden on #shortcuts-sub-menu
+          "
+  >
+    Shortcuts
+    <div
+      id="shortcuts-sub-menu"
+      class="absolute bg-white py-1 font-apple border-b-2 border-black hidden"
+      _="on mouseleave toggle .hidden on #shortcuts-sub-menu"
+    ></div>
+  </button>
+</div>
