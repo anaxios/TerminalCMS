@@ -685,8 +685,20 @@ video {
   inset-inline-end: 0.25rem;
 }
 
+.left-7 {
+  left: 1.75rem;
+}
+
+.right-7 {
+  right: 1.75rem;
+}
+
 .start-1 {
   inset-inline-start: 0.25rem;
+}
+
+.top-7 {
+  top: 1.75rem;
 }
 
 .isolate {
@@ -695,6 +707,10 @@ video {
 
 .isolation-auto {
   isolation: auto;
+}
+
+.z-50 {
+  z-index: 50;
 }
 
 .float-start {
@@ -743,6 +759,10 @@ video {
 
 .m-1 {
   margin: 0.25rem;
+}
+
+.m-auto {
+  margin: auto;
 }
 
 .mx-3 {
@@ -873,6 +893,10 @@ video {
   height: 0.5rem;
 }
 
+.h-96 {
+  height: 24rem;
+}
+
 .h-screen {
   height: 100vh;
 }
@@ -883,6 +907,10 @@ video {
 
 .w-1 {
   width: 0.25rem;
+}
+
+.w-96 {
+  width: 24rem;
 }
 
 .w-\[this-is\\\\\] {

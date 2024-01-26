@@ -5,6 +5,12 @@
     <!-- stop browser from caching while testing -->
     <!-- <meta name="viewport" content="user-scalable=0" /> -->
     <!-- make ios not zoom when keyboard pops up -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=VT323&display=swap"
+      rel="stylesheet"
+    />
     <script
       src="https://unpkg.com/htmx.org@1.9.10"
       integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC"
@@ -15,6 +21,26 @@
     <script src="https://unpkg.com/htmx.org@1.4.1/dist/ext/client-side-templates.js"></script>
     <script src="https://unpkg.com/mustache@latest"></script>
     <script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" type="text/css" href="css/terminalCMS.css" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              apple: ["Appleiie"],
+              ibm: ["IBM Plex Mono"],
+            },
+            screens: {
+              sm: "640px",
+              md: "768px",
+              lg: "1024px",
+              xl: "1440px",
+            },
+          },
+        },
+      };
+    </script>
     <!-- Alpine Plugins -->
     <script
       defer
@@ -26,33 +52,49 @@
       defer
       src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
     ></script>
-    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <!-- Showdown Markdown -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"
+      integrity="sha512-LhccdVNGe2QMEfI3x4DVV3ckMRe36TfydKss6mJpdHjNFiV07dFpS2xzeZedptKZrwxfICJpez09iNioiSZ3hA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      var converter = new showdown.Converter();
+    </script>
     <title>J3NKN5.CC</title>
   </head>
-  <body class="bg-emerald-950" hx-ext="client-side-templates">
+  <body class="bg-emerald-950 font-ibm" hx-ext="client-side-templates">
     <!-- MAIN CONSOLE WINDOW -->
     <div
       id="consoleWindow"
-      class="flex flex-col place-content-between max-h-screen h-screen max-w-screen-lg bg-emerald-950 pl-4 pr-4 font-apple text-zinc-400"
+      class="flex flex-col place-content-between max-h-screen h-screen max-w-screen-lg bg-emerald-950 pl-4 pr-4 text-zinc-400"
     >
+      <!-- MENU BAR -->
       <div
         id="menu"
-        class="bg-white py-1 font-apple border-b-2 border-black relative fixed max-w-screen-lg"
+        class="bg-white py-1 font-apple border-b-2 border-black relative sticky max-w-screen-lg"
         hx-trigger="load"
         hx-get="menu.html"
         hx-swaps="innerHTML"
       ></div>
       <div
         id="content"
-        hx-get="pages/intro"
+        class="hidden"
         hx-trigger="load"
-        class="grow overflow-auto whitespace-pre-wrap"
+        hx-get="pages/intro"
+        hx-swaps="innerHTML"
+        _="on mutation 
+          set fee to my.innerHTML 
+          js(fee) return converter.makeHtml(fee) end 
+          then put it into #content-markdown.innerHTML"
       ></div>
+      <div id="content-markdown" class="grow overflow-auto"></div>
 
       <div
         class="flex-none bg-emerald-950 inset-x-0 bottom-0 bg-inheret pt-1 mb-2 sticky"
       >
-        <div class="flex bg-inheret">
+        <div class="flex bg-inheret hidden">
           <span class="">]</span>
           <!-- <span class="animate-pulse" hx-ext="class-tools" classes="toggle CursorBlink:700ms" style="visibility:visible;">&block;</span> -->
           <input

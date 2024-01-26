@@ -1,16 +1,30 @@
-<div id="menu-container" class="flex flex-row">
-  <button
-    id="logo-menu"
-    class="text-black px-2 tracking-tighter font-extrabold font-apple"
-    _="on click toggle .hidden on #logo-sub-menu"
-  >
-    ][
+<div
+  id="menu-container"
+  class="flex flex-row font-extrabold text-2xl font-apple"
+  _="on click from <button/> in me
+      toggle .bg-black .text-white on the target
+      
+    on mouseleave from <button/> in me
+      if target match .bg-black
+        toggle .bg-white .text-black on the target
+      "
+>
+  <div>
+    <button
+      id="logo-menu"
+      class="text-black px-2 tracking-tighter font-extrabold"
+      _="on click toggle the *display of the next <div/>"
+    >
+      ][
+    </button>
     <div
       id="logo-sub-menu"
-      class="absolute bg-white py-1 font-apple border-b-2 border-black hidden"
-      _="on mouseleave toggle .hidden on #logo-sub-menu"
-    ></div>
-  </button>
+      class="absolute bg-white py-1 font-apple border-b-2 border-black"
+      _="init hide me"
+    >
+      <div>test</div>
+    </div>
+  </div>
   <!--  -->
   <!--  -->
   <!--  -->
